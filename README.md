@@ -1,8 +1,17 @@
 # FullStackOpen
 
+```mermaid
+
 sequenceDiagram
     participant browser
     participant server
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    activate server
+    server-->>browser: 302 URL Redirect (/exampleapp/notes)
+    deactivate server
+
+    Note right of browser: The servers asks the browser to do a new HTTP GET Request to the Address defined in the Header's                             Location
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
@@ -27,3 +36,4 @@ sequenceDiagram
     deactivate server
 
     Note right of browser: The browser executes the callback function that renders the notes
+```
